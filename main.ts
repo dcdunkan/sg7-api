@@ -36,13 +36,11 @@ serve((req) => {
   if (!category) {
     return new Response("Not found", { status: 404 });
   }
-  
-  let json: string;
+
   try {
-    json = Deno.readTextFileSync(`songs/${category}/${song}.json`);
+    const json = Deno.readTextFileSync(`./songs/${category}/${song}.json`);
+    return Response.json(JSON.parse(json));
   } catch (_e) {
     return new Response("Not found", { status: 404 });
   }
-
-  return Response.json(JSON.parse(json), { status: 200 });
 });
