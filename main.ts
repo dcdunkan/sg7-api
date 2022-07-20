@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.148.0/http/mod.ts";
 
-serve((req) => {
+serve(async (req) => {
   const path = new URL(req.url).pathname;
   const split = path.split("/");
   if (path === "/" || split.length !== 3) {
@@ -38,8 +38,10 @@ serve((req) => {
   }
 
   try {
-    const json = Deno.readTextFileSync(`./songs/${category}/${song}.json`);
-    return Response.json(JSON.parse(json));
+    const json = await (await fetch(
+      `https://raw.githubusercontent.com/dcdunkan/sg7-api/main/songs/${category}/${song}.json`,
+    )).json();
+    return Response.json(json);
   } catch (_e) {
     return new Response("Not found", { status: 404 });
   }
