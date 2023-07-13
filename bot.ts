@@ -140,7 +140,7 @@ serve(async (req) => {
   return Response.redirect(`https://telegram.me/${bot.botInfo.username}`);
 });
 
-/** https://github.com/grammyjs/storages/blob/main/packages/README.md#grammy-storages https://github.com/grammyjs/storages/tree/main/packages#grammy-storages */
+/** https://github.com/grammyjs/storages/blob/main/packages/README.md#grammy-storages2 https://github.com/grammyjs/storages/tree/main/packages#grammy-storages */
 export function sanitize(str: string) {
   return str
     .replace(/</g, "&lt;")
