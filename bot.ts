@@ -141,7 +141,7 @@ serve(async (req) => {
 });
 
 /** https://github.com/grammyjs/storages/blob/main/packages/README.md#grammy-storages https://github.com/grammyjs/storages/tree/main/packages#grammy-storages */
-function sanitize(str: string) {
+export function sanitize(str: string) {
   return str
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
